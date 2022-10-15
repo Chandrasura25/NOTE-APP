@@ -93,7 +93,7 @@ class NoteController extends Controller
             'note_title' => $request ->note_title, 
             'note' => $request ->note, 
           ]);
-          return redirect('/note');
+          return redirect('/home');
     }
 
     /**
@@ -106,6 +106,6 @@ class NoteController extends Controller
     {
         $delete = Note::find($id);
         $delete->delete();
-        return redirect('/note');
+        return redirect('/home');
     }
 }

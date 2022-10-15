@@ -8,9 +8,9 @@
                     @if (count($cats) > 0)
                     @foreach ($cats as $cat)
                     <li>
-                        <a href="#" style="--clr:#ee5253" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <a href="#" style="--clr:{{$colors[$cat->cat_id]}}">
                             <span class="title">{{$cat->cat_name}}</span>
-                            <span class="icon"><i>07</i></span> 
+                            <span class="icon"><i>0{{$count[$cat->cat_id]}}</i></span> 
                         </a>
                     </li>
                     @endforeach 
@@ -22,13 +22,35 @@
             <div class="toggle" onclick="toggleMenu()"></div>
         </div>
         <div class="col-md">
-        <div class="row mt-2">
-            @if (count($notes) > 0)
+        <div class="row mt-2 gap-3">
+            @if (count($notes) > 0) 
             @foreach ($notes as $note)
-            <div class="col-3">
-           <div class="card shadow">
-            <h3>{{$note->cat_name}}</h3>
-           </div>
+            <div class="col">
+                <div class="boxCard shadow" style="--clr:{{$colors[$note->cat_id]}}">
+                    <div class="topCard">
+                        <h3>{{$note->note_title}}</h3>
+                        <p>{{$note->cat_name}}</p>
+                    </div>
+                    <div class="note">
+                        <p>{{$note->note}}</p>
+                    </div>
+                    <div class="bottomCard">
+                        <div class="dropdown">
+                            <i class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Menu</i>
+                            <ul class="dropdown-menu">
+                              <li><a class="dropdown-item" href="/note/{{$note->note_id}}/edit"><i class="fa fa-edit" aria-hidden="true"></i> Edit</a></li>
+                              <li>
+                              <form action="/note/{{$note->note_id}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                   <a class="dropdown-item"><button class="border-0"><i class="fa fa-trash" aria-hidden="true"></i>Delete</button></a>
+                                </form>   
+                              </li>
+                            </ul>
+                        </div>
+                        <p>{{$note->created_at}}</p>
+                    </div>
+                </div>
             </div>   
             @endforeach
             @else

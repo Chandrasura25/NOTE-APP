@@ -46,7 +46,7 @@ body{
     position: absolute;
     top: 30%;
     right: 30px;
-    background: slateblue;
+    background: var(--clr);
     display: block;
     min-width: 40px;
     height: 30px;
@@ -115,6 +115,7 @@ body{
     box-shadow: 0 25px 35px rgba(0, 0, 0, 0.1);
     transition: height 0.5s, width 0.5s;
     transition-delay: 0s, 0.75s;
+    z-index: 5;
 }
 .navigate.active{
     width: 300px;
@@ -343,4 +344,53 @@ body{
 }
 .box:hover::before{
 	background: #0472ca;
+}
+.boxCard{
+    width: 400px;
+    height: 270px;
+    border-radius:20px;
+    background:var(--clr);
+    color:#fff;
+    cursor: pointer;
+}
+.boxCard .topCard{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin:10px 15px;
+}
+.boxCard .topCard h3{
+    font-size: 1.4em;
+    text-transform: uppercase;
+}
+.boxCard .topCard p{
+    background: #fff;
+    border: 2px solid var(--clr);
+    color: var(--clr);
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-style: italic;
+    font-size: 1.3em;
+}
+.boxCard .note{
+    position: relative;
+    height: 60%;
+    margin:0 20px;
+    font-size: 1em;
+    letter-spacing: 1px;
+}
+.boxCard .bottomCard{
+    position: relative;
+    display: flex;
+    margin: 0 20px;
+    justify-content: space-between;
+    font-style: italic;
+}
+.boxCard .bottomCard .dropdown .dropdown-item button{
+    background: none;
+    font-style: italic;
+}
+.boxCard .bottomCard .dropdown .dropdown-item button i{
+    margin-left: -3px;
 }
