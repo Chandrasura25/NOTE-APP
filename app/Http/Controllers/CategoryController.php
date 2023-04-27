@@ -64,6 +64,9 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
+        
+        $cat= Category::find($id);
+        return view('editCat',['cat'=>$cat]);
         //
     }
 
@@ -77,6 +80,10 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Category::where('cat_id',$id)->update([
+            'cat_name' => $request ->cat_name, 
+          ]);
+          return redirect('/home');
     }
 
     /**

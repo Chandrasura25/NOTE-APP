@@ -9,8 +9,23 @@
                     @foreach ($cats as $cat)
                     <li>
                         <a href="#" style="--clr:{{$colors[$cat->cat_id]}}">
-                            <span class="title">{{$cat->cat_name}}</span>
-                            <span class="icon"><i>0{{$count[$cat->cat_id]}}</i></span> 
+                            <span>
+                                <span class="title">{{$cat->cat_name}}</span>
+                                <form action="category/{{$cat->cat_id}}/edit" method="get">
+                                    <button class="fa fa-edit border-0 bg-transparent text-light" aria-hidden="true"></button>
+                                </form>
+                            </span>
+                            <span class="icon"><i>
+                                @if (isset($count[$cat->cat_id]) && $count[$cat->cat_id] >= 10)
+                                    {{ $count[$cat->cat_id] }}
+                                @else
+                                    0{{ $count[$cat->cat_id] ?? '0' }}
+                                @endif
+                            </i></span>
+                            
+                              
+
+                            {{-- <span class="icon"><i>0{{ $count[$cat->cat_id] ?? '0' }}</i></span> --}}
                         </a>
                     </li>
                     @endforeach 

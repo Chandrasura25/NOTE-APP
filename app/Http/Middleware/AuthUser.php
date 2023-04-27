@@ -17,7 +17,7 @@ class AuthUser
     public function handle(Request $request, Closure $next)
     {
         if(!auth()->user()){
-            return redirect('/login');
+            return redirect('login');
             // response()->view("welcome");
         }
         // if($_SESSION['user_id']){

@@ -46,18 +46,18 @@
                     <ul class="navbar-nav ms-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
+                        <li class="nav-item">
+                                    @if (Route::has('login'))
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    @endif
                                 </li>
-                            @endif
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
+                            <li class="nav-item">
+                                    @if (Route::has('register'))
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
+                                    @endif
+                             </li>
+                        @else 
                         <li>
                             <a href="/note/create" class="addNote" style="--clr:#ff22eb;--i:2"><span>Add Note</span></a>
                         </li>
@@ -67,7 +67,7 @@
                                         <div class="imgBx">
                                             <img src="{{asset("images/".Auth::user()->image_name)}}" alt="">
                                         </div>
-                                        <p class="username">{{ Auth::user()->name }}</p>
+                                        <p class="username">{{ Auth::user()->name}}</p>
                                     </div>
                                     <div class="menuToggle"></div>
                                     <ul class="menu">
